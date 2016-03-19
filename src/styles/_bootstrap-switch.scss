@@ -1,0 +1,13 @@
+.bootstrap-switch-handle-off {
+    &:before {
+        font-family: "FontAwesome";
+        content: "\f05e";
+    }
+}
+
+.bootstrap-switch-handle-on {
+    &:before {
+        font-family: "FontAwesome";
+        content: "\f00c";
+    }
+}

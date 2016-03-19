@@ -2,10 +2,15 @@
 <html>
   <head>
     <title>Grade.io</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
   <body>
     <div id="app-host"></div>
+    <script src="jspm_packages/github/fgnass/spin.js@2.3.2/spin.js"></script>
+    <script>
+        var target = document.getElementById('app-host')
+        var spinner = new Spinner({scale: 1.5, width: 2, corners: 0.5, length: 10}).spin(target);
+    </script>
     <script src="jspm_packages/system.js"></script>
     <script src="jspm.config.js"></script>
     <script>

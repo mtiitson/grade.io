@@ -1,20 +1,25 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { action } from 'actions/index';
+import Navigation from '../components/Navigation';
+import Authentication from '../components/Authentication';
 
 @connect(state => ({ state }),
 	{ action }
 )
 export default class App extends Component {
-    static propTypes = {
-        state: PropTypes.object.isRequired,
-        action: PropTypes.func.isRequired
-    }
+    //static propTypes = {
+    //    state: PropTypes.object.isRequired,
+    //    action: PropTypes.func.isRequired
+    //}
 	render() {
-	    const { action } = this.props;
 		return (
-		    <div>{'app'}
-		    </div>
+            <div>
+                <Navigation />
+                <div className="container">
+                    {this.props.children}
+                </div>
+            </div>
 		);
 	}
 }
