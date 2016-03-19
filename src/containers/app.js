@@ -4,9 +4,6 @@ import { action } from 'actions/index';
 import Navigation from '../components/Navigation';
 import Authentication from '../components/Authentication';
 
-@connect(state => ({ state }),
-	{ action }
-)
 export default class App extends Component {
     //static propTypes = {
     //    state: PropTypes.object.isRequired,

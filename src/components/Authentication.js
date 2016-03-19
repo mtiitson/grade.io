@@ -26,7 +26,7 @@ export default class Authentication extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col">
+                <div className="col-md-12">
                     <div className="panel panel-default with-nav-tabs">
                         <div className="panel-heading">
                             <Tabs>

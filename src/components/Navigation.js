@@ -17,6 +17,7 @@ export default class Navigation extends Component {
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav">
                             <li><Link to="/auth">Autentimine</Link></li>
+                            <li><Link to="/dash">Tulemused</Link></li>
                         </ul>
                     </div>
                 </div>
