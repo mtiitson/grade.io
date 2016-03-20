@@ -8165,3 +8165,9 @@ select.selectpicker {
   margin-bottom: 0;
   width: 100%;
   float: none; }
+
+.bootstrap-typeahead .dropdown-menu {
+  overflow-x: hidden !important; }
+
+.bootstrap-typeahead.open {
+  position: initial !important; }

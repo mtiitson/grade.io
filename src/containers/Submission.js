@@ -11,11 +11,11 @@ export default class Submission extends Component {
         },
         {
             title: "Prototüüp I",
-            content: (<Prototype />),
+            content: (<Prototype key={0}/>),
         },
         {
             title: "Prototüüp II",
-            content: (<Prototype />),
+            content: (<Prototype key={1}/>),
         }
     ]
     

@@ -1,43 +1,24 @@
 import React, { Component, PropTypes } from 'react';
-import $ from 'jquery';
-import bootstrapSelect from 'bootstrap-select';
-import Typeahead from 'react-bootstrap-typeahead';
+import LabList from './LabList';
+import Coauthor from './Coauthor';
 
 export default class Lab extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            coauthors: [],
+        }
+    }
     render() {
         return (
             <div className="row" style={styles.row}>
                 <div className="col-md-3">
-                    <select ref={select => {
-                        $(select).selectpicker({
-                            mobile: true,
-                            showTick: true,
-                            width: '100%',
-                        });
-                    }}>
-                      <option>Vali praktikum...</option>
-                      <option>Prototüüpimine paberil</option>
-                      <option>Veebilehtede põhjad</option>
-                      <option>Frustratsiooniliides</option>
-                      <option>Kassid</option>
-                      <option>Nurgalised kassid</option>
-                      <option>Süntaktiliselt äge CSS</option>
-                    </select>
+                    <LabList />
                 </div>
                 <div className="col-md-3">
-                    <div className="input-group">
-                        <span className="input-group-addon"><i className="fa fa-users"></i></span>
-                        <Typeahead 
-                            multiple
-                            emptyLabel={'Õpilast ei leitud'}
-                            placeholder={'Kaasautorid'}
-                            options={[
-                                {label: "Milvi Mulvi"},
-                                {label: "Tiiu Tiik"},
-                                {label: "Riho Rünno Rein"}
-                            ]}
-                        />
-                    </div>
+                    <Coauthor 
+                        selected={this.state.coauthors}
+                        onSelect={this.handleCoauthorSelect}/>
                 </div>
                 <div className="col-md-4">
                     <div className="input-group">
@@ -54,6 +35,11 @@ export default class Lab extends Component {
                 </div>
             </div>
         )
+    }
+    handleCoauthorSelect = (coauthors) => {
+        this.setState({
+            coauthors
+        })
     }
 }
 const styles = {

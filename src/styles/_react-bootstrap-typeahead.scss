@@ -1,0 +1,8 @@
+.bootstrap-typeahead {
+    .dropdown-menu {
+        overflow-x: hidden !important;
+    }
+    &.open {
+        position: initial !important;
+    }
+}
