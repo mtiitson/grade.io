@@ -29,11 +29,13 @@ System.config({
     "jquery": "npm:jquery@2.2.2",
     "radium": "npm:radium@0.16.6",
     "react": "npm:react@0.14.7",
+    "react-bootstrap-table": "npm:react-bootstrap-table@2.0.2",
     "react-bootstrap-typeahead": "npm:react-bootstrap-typeahead@0.2.2",
     "react-dom": "npm:react-dom@0.14.7",
     "react-input-autosize": "npm:react-input-autosize@0.6.10",
     "react-redux": "npm:react-redux@4.4.1",
     "react-router": "npm:react-router@2.0.1",
+    "react-scroll": "npm:react-scroll@1.0.4",
     "redux": "npm:redux@3.3.1",
     "scss": "github:mobilexag/plugin-sass@0.3.0",
     "spin": "github:fgnass/spin.js@2.3.2",
@@ -508,6 +510,15 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:react-addons-update@0.14.7": {
+      "react": "npm:react@0.14.7"
+    },
+    "npm:react-bootstrap-table@2.0.2": {
+      "classnames": "npm:classnames@2.2.3",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "react": "npm:react@0.14.7",
+      "react-toastr": "npm:react-toastr@2.4.0"
+    },
     "npm:react-bootstrap-typeahead@0.2.2": {
       "classnames": "npm:classnames@2.2.3",
       "lodash": "npm:lodash@3.10.1",
@@ -547,6 +558,16 @@ System.config({
       "invariant": "npm:invariant@2.2.1",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "warning": "npm:warning@2.1.0"
+    },
+    "npm:react-scroll@1.0.4": {
+      "react": "npm:react@0.14.7"
+    },
+    "npm:react-toastr@2.4.0": {
+      "classnames": "npm:classnames@2.2.3",
+      "element-class": "npm:element-class@0.2.2",
+      "react": "npm:react@0.14.7",
+      "react-addons-update": "npm:react-addons-update@0.14.7",
+      "react-dom": "npm:react-dom@0.14.7"
     },
     "npm:react@0.14.7": {
       "fbjs": "npm:fbjs@0.6.1",

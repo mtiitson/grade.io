@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import LabResult from '../entities/LabResult';
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import 'react-bootstrap-table/css/react-bootstrap-table.css!';
+import 'react-bootstrap-table/css/toastr.css!';
 
 export default class LabResults extends Component {
     static propTypes = {
@@ -8,49 +11,40 @@ export default class LabResults extends Component {
     render() {
         if (!this.props.results || !this.props.results.length) {
             return (
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="panel panel-default"  style={styles.panel}> 
-                            <p className="text-center">Tulemused puuduvad</p>
-                        </div>
-                    </div>
+                <div className="panel panel-default"  style={styles.panel}> 
+                    <p className="text-center">Tulemused puuduvad</p>
                 </div>
             )
         }
+        const resultTable = this.props.results.map(result => {
+            return {
+                title: result.lab.title,
+                grade: result.grade,
+                date: result.date,
+                coauthors: result.getCoauthors("Mati Kaal").join(', '),
+            };
+        });
         return (
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="panel panel-default" style={styles.panel}>  
-                        <table className="table table-hover"> 
-                            <thead> 
-                                <tr> 
-                                    <th className="">Pealkiri</th>
-                                    <th>Kuupäev</th> 
-                                    <th>Punktid</th>
-                                    <th>Kaasautorid</th>
-                                </tr> 
-                            </thead> 
-                            <tbody> 
-                                {this.props.results.map((result, i) => {
-                                    return (
-                                        <tr key={i}> 
-                                            <th scope="row">{result.lab.title}</th>
-                                            <td>{result.date.toLocaleDateString()}</td> 
-                                            <td>{result.grade}</td> 
-                                            <td>{result.getCoauthors("Mati Kaal")}</td> 
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div className="panel panel-default">
+              <div className="panel-body">
+                <BootstrapTable data={resultTable} hover>
+                    <TableHeaderColumn dataField="title" dataSort isKey>{'Pealkiri'}</TableHeaderColumn>
+                    <TableHeaderColumn dataField="date" dataSort dataFormat={toLocalDate}>{'Kuupäev'}</TableHeaderColumn>
+                    <TableHeaderColumn dataField="grade">{'Punktid'}</TableHeaderColumn>
+                    <TableHeaderColumn dataField="coauthors" dataSort>{'Kaasautorid'}</TableHeaderColumn>
+                </BootstrapTable>
+              </div>
             </div>
         );
     }
 }
+
 const styles = {
     panel: {
         padding: '2em',
     }
+}
+
+function toLocalDate(date) {
+    return date.toLocaleDateString();
 }

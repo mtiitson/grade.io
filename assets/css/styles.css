@@ -8171,3 +8171,6 @@ select.selectpicker {
 
 .bootstrap-typeahead.open {
   position: initial !important; }
+
+.react-bs-table {
+  margin: 0 !important; }
