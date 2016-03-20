@@ -1,6 +1,6 @@
 export class Colors {
     static ACHIEVEMENT = {
-        hex: "#EAC117",
+        hex: "#eac117",
         base64: "data:image/gif;base64,R0lGODlhAQABAPAAAOrBF////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==",
     };
     static SUCCESS = {
@@ -9,6 +9,11 @@ export class Colors {
     };
     static DISABLED = {
         hex: "#777777",
-        base64: "data:image/gif;base64,R0lGODlhAQABAPAAAHd3d////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+        base64: "data:image/gif;base64,R0lGODlhAQABAPAAAHd3d////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==",
+    };
+    static DANGER = {
+        hex: "#d9534f",
+        base64: "data:image/gif;base64,R0lGODlhAQABAPAAANlTT////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==",
     }
+
 }

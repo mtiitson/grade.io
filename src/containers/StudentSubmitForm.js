@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import TabbedPane from '../components/TabbedPane';
-import Lab from '../components/Submission/Lab';
-import Prototype from '../components/Submission/Prototype';
+import Lab from '../components/SubmitForm/Lab';
+import Prototype from '../components/SubmitForm/Prototype';
 
-export default class Submission extends Component {
+export default class StudentSubmitForm extends Component {
     tabs = [
         {
             title: "Praktikum",
