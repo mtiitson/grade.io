@@ -4,6 +4,9 @@ import bootstrapSelect from 'bootstrap-select';
 import Coauthor from './Coauthor';
 
 export default class Prototype extends Component {
+    static propTypes = {
+        closed: PropTypes.bool,
+    }
     constructor(props) {
         super(props);
         this.state = {
@@ -11,6 +14,13 @@ export default class Prototype extends Component {
         }
     }
     render() {
+        if (this.props.closed) {
+            return (
+                <div className="row" style={styles.row}>
+                    <p className="text-center">Esitamine on suletud</p>
+                </div>
+            )
+        }
         return (
             <div className="row" style={styles.row}>
                 <div className="col-md-5">

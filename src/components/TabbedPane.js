@@ -7,6 +7,10 @@ export default class TabbedPane extends Component {
         tabs: PropTypes.arrayOf(
                 PropTypes.shape({
                     title: PropTypes.string,
+                    label: PropTypes.shape({
+                        text: PropTypes.string,
+                        type: PropTypes.oneOf(['default', 'primary','success','info','warning','danger']),
+                    }),
                     content: PropTypes.obj,
                 })
             ).isRequired,
@@ -28,10 +32,12 @@ export default class TabbedPane extends Component {
                         <div className="panel-heading">
                             <Tabs>
                                 {this.props.tabs.map((tab,i) => {
+                                    const {title, label} = tab;
                                     return (
                                         <Tab
                                             key={i}
-                                            title={tab.title}
+                                            title={title}
+                                            label={label}
                                             selected={this.state.selectedTab === tab}
                                             onSelect={this.handleTabSelection.bind(this, tab)}
                                         />

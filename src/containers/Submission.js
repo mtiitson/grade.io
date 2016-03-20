@@ -15,7 +15,13 @@ export default class Submission extends Component {
         },
         {
             title: "Prototüüp II",
-            content: (<Prototype key={1}/>),
+            label: {
+                text: "Suletud",
+                type: "default",
+            },
+            content: (<Prototype 
+                      closed
+                      key={1}/>),
         }
     ]
     
