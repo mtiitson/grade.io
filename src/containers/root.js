@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import App from './app';
 import Authentication from '../containers/Authentication';
 import StudentView from '../containers/StudentView';
+import TeacherWorkspace from '../containers/TeacherWorkspace';
 
 export default class Root extends Component {
 	static propTypes = {
@@ -17,6 +18,7 @@ export default class Root extends Component {
                     <Route path="/" component={App}>
                         <Route path="/student" component={StudentView}/>
                         <Route path="/auth" component={Authentication}/>
+                        <Route path="/ws" component={TeacherWorkspace}/>
                     </Route>
                 </Router>
 			</Provider>

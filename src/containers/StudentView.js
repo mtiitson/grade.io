@@ -4,7 +4,6 @@ import Dashboard from './StudentDashboard';
 import LabResults from './StudentLabResults';
 import PrototypeResults from './StudentPrototypeResults';
 import QuizResults from './StudentQuizResults';
-import { Element, scroller } from 'react-scroll';
 
 export default class StudentView extends Component {
     resultMap = {
@@ -30,20 +29,18 @@ export default class StudentView extends Component {
                   <h2 className="h1">Tulemused</h2>
                 </div>
                 <Dashboard onSelect={this.handleDashboardSelect}/> 
-                <Element name="details">
-                    {(() => {
-                        if (this.state.visibleResults) {
-                            return (
-                                <div className="well" style={styles.visibleResults}>
-                                    <h2 className="h2">{this.state.visibleResults}
-                                    <span className="pull-right"><i onClick={this.handleDashboardSelect.bind(this, this.state.visibleResults)} className="fa fa-times"></i></span>
-                                    </h2>
-                                    {this.resultMap[this.state.visibleResults]}
-                                </div>
-                            )
-                        }
-                    })()}
-                </Element>
+                {(() => {
+                    if (this.state.visibleResults) {
+                        return (
+                            <div className="well" style={styles.visibleResults}>
+                                <h2 className="h2">{this.state.visibleResults}
+                                <span className="pull-right"><i onClick={this.handleDashboardSelect.bind(this, this.state.visibleResults)} className="fa fa-times"></i></span>
+                                </h2>
+                                {this.resultMap[this.state.visibleResults]}
+                            </div>
+                        )
+                    }
+                })()}
             </div>
         )
     }
@@ -56,7 +53,6 @@ export default class StudentView extends Component {
             this.setState({
                 visibleResults: result.title
             });
-            scroller.scrollTo("details", true, 500);
         }
     }
 }

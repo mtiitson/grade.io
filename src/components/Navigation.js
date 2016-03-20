@@ -18,6 +18,7 @@ export default class Navigation extends Component {
                         <ul className="nav navbar-nav">
                             <li><Link to="/auth">Autentimine</Link></li>
                             <li><Link to="/student">Õpilane</Link></li>
+                            <li><Link to="/ws">Õpetaja</Link></li>
                         </ul>
                     </div>
                 </div>

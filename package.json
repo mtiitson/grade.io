@@ -33,7 +33,6 @@
       "react-input-autosize": "npm:react-input-autosize@^0.6.10",
       "react-redux": "npm:react-redux@^4.4.1",
       "react-router": "npm:react-router@^2.0.1",
-      "react-scroll": "npm:react-scroll@^1.0.4",
       "redux": "npm:redux@^3.3.1",
       "scss": "github:mobilexag/plugin-sass@^0.3.0",
       "spin": "github:fgnass/spin.js@2.3.2"

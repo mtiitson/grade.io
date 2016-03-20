@@ -35,7 +35,6 @@ System.config({
     "react-input-autosize": "npm:react-input-autosize@0.6.10",
     "react-redux": "npm:react-redux@4.4.1",
     "react-router": "npm:react-router@2.0.1",
-    "react-scroll": "npm:react-scroll@1.0.4",
     "redux": "npm:redux@3.3.1",
     "scss": "github:mobilexag/plugin-sass@0.3.0",
     "spin": "github:fgnass/spin.js@2.3.2",
@@ -558,9 +557,6 @@ System.config({
       "invariant": "npm:invariant@2.2.1",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "warning": "npm:warning@2.1.0"
-    },
-    "npm:react-scroll@1.0.4": {
-      "react": "npm:react@0.14.7"
     },
     "npm:react-toastr@2.4.0": {
       "classnames": "npm:classnames@2.2.3",
