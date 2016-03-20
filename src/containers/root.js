@@ -5,6 +5,7 @@ import App from './app';
 import Authentication from '../containers/Authentication';
 import ResultDashboard from '../components/ResultDashboard';
 import Submission from '../containers/Submission';
+import StudentLabResults from '../containers/StudentLabResults';
 
 export default class Root extends Component {
 	static propTypes = {
@@ -19,6 +20,7 @@ export default class Root extends Component {
                         <Route path="/auth" component={Authentication}/>
                         <Route path="/dash" component={ResultDashboard}/>
                         <Route path="/submit" component={Submission}/>
+                        <Route path="/labs" component={StudentLabResults}/>
                     </Route>
                 </Router>
 			</Provider>

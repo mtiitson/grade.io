@@ -19,6 +19,7 @@ export default class Navigation extends Component {
                             <li><Link to="/auth">Autentimine</Link></li>
                             <li><Link to="/dash">Tulemused</Link></li>
                             <li><Link to="/submit">Esitamine</Link></li>
+                            <li><Link to="/labs">Praktikumid</Link></li>
                         </ul>
                     </div>
                 </div>
