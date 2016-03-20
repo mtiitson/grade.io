@@ -1,25 +1,22 @@
 import React, { Component, PropTypes } from 'react';
-import Register from './Authentication/Register';
-import Login from './Authentication/Login';
-import Tabs from './Authentication/Tabs';
-import Tab from './Authentication/Tab';
+import Tabs from './TabbedPane/Tabs';
+import Tab from './TabbedPane/Tab';
 
-export default class Authentication extends Component {
-    tabs = [
-        {
-            title: "Logi sisse", 
-            content: (<Login />)
-        }, 
-        {
-            title: "Registreeri", 
-            content: (<Register />)
-        }
-    ];
+export default class TabbedPane extends Component {
+    static propTypes = {
+        tabs: PropTypes.arrayOf(
+                PropTypes.shape({
+                    title: PropTypes.string,
+                    content: PropTypes.obj,
+                })
+            ).isRequired,
+
+    }
 
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: this.tabs[0],
+            selectedTab: props.tabs[0],
         }
     }
 
@@ -30,7 +27,7 @@ export default class Authentication extends Component {
                     <div className="panel panel-default with-nav-tabs">
                         <div className="panel-heading">
                             <Tabs>
-                                {this.tabs.map((tab,i) => {
+                                {this.props.tabs.map((tab,i) => {
                                     return (
                                         <Tab
                                             key={i}

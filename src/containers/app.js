@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { action } from 'actions/index';
 import Navigation from '../components/Navigation';
-import Authentication from '../components/Authentication';
 
 export default class App extends Component {
     //static propTypes = {

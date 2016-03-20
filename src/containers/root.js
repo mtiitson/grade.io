@@ -2,8 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { Router, Route, browserHistory } from 'react-router'
 import { Provider } from 'react-redux';
 import App from './app';
-import Authentication from '../components/Authentication';
+import Authentication from '../containers/Authentication';
 import ResultDashboard from '../components/ResultDashboard';
+import Submission from '../containers/Submission';
 
 export default class Root extends Component {
 	static propTypes = {
@@ -17,6 +18,7 @@ export default class Root extends Component {
                     <Route path="/" component={App}>
                         <Route path="/auth" component={Authentication}/>
                         <Route path="/dash" component={ResultDashboard}/>
+                        <Route path="/submit" component={Submission}/>
                     </Route>
                 </Router>
 			</Provider>

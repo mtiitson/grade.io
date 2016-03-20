@@ -20,6 +20,7 @@ System.config({
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "bootstrap-sass": "github:twbs/bootstrap-sass@3.3.6",
+    "bootstrap-select": "npm:bootstrap-select@1.10.0",
     "bootstrap-switch": "npm:bootstrap-switch@3.3.2",
     "classnames": "npm:classnames@2.2.3",
     "core-js": "npm:core-js@1.2.6",
@@ -28,7 +29,9 @@ System.config({
     "jquery": "npm:jquery@2.2.2",
     "radium": "npm:radium@0.16.6",
     "react": "npm:react@0.14.7",
+    "react-bootstrap-typeahead": "npm:react-bootstrap-typeahead@0.2.2",
     "react-dom": "npm:react-dom@0.14.7",
+    "react-input-autosize": "npm:react-input-autosize@0.6.10",
     "react-redux": "npm:react-redux@4.4.1",
     "react-router": "npm:react-router@2.0.1",
     "redux": "npm:redux@3.3.1",
@@ -140,6 +143,9 @@ System.config({
     },
     "npm:bn.js@4.11.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:bootstrap-select@1.10.0": {
+      "jquery": "npm:jquery@2.2.2"
     },
     "npm:bootstrap-switch@3.3.2": {
       "jquery": "npm:jquery@2.2.2",
@@ -502,8 +508,30 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:react-bootstrap-typeahead@0.2.2": {
+      "classnames": "npm:classnames@2.2.3",
+      "lodash": "npm:lodash@3.10.1",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "react": "npm:react@0.14.7",
+      "react-dom": "npm:react-dom@0.14.7",
+      "react-highlighter": "npm:react-highlighter@0.3.1",
+      "react-input-autosize": "npm:react-input-autosize@0.6.10",
+      "react-onclickoutside": "npm:react-onclickoutside@4.5.0"
+    },
     "npm:react-dom@0.14.7": {
       "react": "npm:react@0.14.7"
+    },
+    "npm:react-highlighter@0.3.1": {
+      "escape-string-regexp": "npm:escape-string-regexp@1.0.5",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "react": "npm:react@0.14.7",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+    },
+    "npm:react-input-autosize@0.6.10": {
+      "react": "npm:react@0.14.7"
+    },
+    "npm:react-onclickoutside@4.5.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:react-redux@4.4.1": {
       "hoist-non-react-statics": "npm:hoist-non-react-statics@1.0.5",
@@ -529,14 +557,14 @@ System.config({
       "fbjs": "npm:fbjs@0.8.0-alpha.3",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:readable-stream@1.1.13": {
+    "npm:readable-stream@1.0.27-1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "core-util-is": "npm:core-util-is@1.0.2",
       "events": "github:jspm/nodelibs-events@0.1.1",
       "inherits": "npm:inherits@2.0.1",
       "isarray": "npm:isarray@0.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "stream-browserify": "npm:stream-browserify@1.0.0",
+      "stream": "github:jspm/nodelibs-stream@0.1.0",
       "string_decoder": "npm:string_decoder@0.10.31"
     },
     "npm:readable-stream@2.0.6": {
@@ -592,7 +620,7 @@ System.config({
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",
       "inherits": "npm:inherits@2.0.1",
-      "readable-stream": "npm:readable-stream@1.1.13"
+      "readable-stream": "npm:readable-stream@1.0.27-1"
     },
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
