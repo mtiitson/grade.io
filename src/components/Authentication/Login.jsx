@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import $ from 'jquery';
-import bootstrapSwitch from 'bootstrap-switch';
 import PasswordField from './PasswordField.jsx';
 
 
@@ -22,9 +20,7 @@ export default class Login extends Component {
                 </div>
 
                 <div className="form-group">
-                    <input type="checkbox" id="rememberMeCheckbox" ref={input => {
-                        $(input).bootstrapSwitch({size: 'mini', onText: '', offText: '', handleWidth: 20} );
-                    }}/>
+                    <input type="checkbox" id="rememberMeCheckbox"/>
                     <label htmlFor="rememberMeCheckbox" style={{fontWeight: 'normal', paddingLeft: 5}}>Pea mind meeles</label>
                 </div>
 

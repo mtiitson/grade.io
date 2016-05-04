@@ -7,9 +7,7 @@ import TeacherQuizSubmit from '../../containers/TeacherQuizSubmit.jsx';
 import StudentLabSeriesReport from '../../containers/StudentLabSeriesReport.jsx';
 import $ from 'jquery';
 
-
-@Radium
-export default class GradesReport extends Component {
+class GradesReport extends Component {
     static propTypes = {
         grades: PropTypes.arrayOf(PropTypes.shape({
             student: PropTypes.string,
@@ -18,7 +16,7 @@ export default class GradesReport extends Component {
             proto2: PropTypes.number,
             quiz: PropTypes.number,
         })),
-    }
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -31,7 +29,7 @@ export default class GradesReport extends Component {
         const {grades} = this.props;
         if (!grades || !grades.length) {
             return (
-                <div className="panel panel-default" style={styles.panel}> 
+                <div className="panel panel-default" style={styles.panel}>
                     <p className="text-center">Hinded puuduvad</p>
                 </div>
             )
@@ -49,15 +47,15 @@ export default class GradesReport extends Component {
                         {this.state.detailsView}
                     </Modal.Body>
                 </Modal>
-                  <BootstrapTable 
+                  <BootstrapTable
                       ref={this.handleTableUpdate}
-                      data={gradesTable} 
+                      data={gradesTable}
                       pagination
                       options={{
                           afterTableComplete: this.handleTableUpdate,
                           noDataText: 'Hindeid ei leitud',
                           clearSearch: true,
-                      }} 
+                      }}
                       trClassName="tr-clickable">
                     <TableHeaderColumn dataField="student" isKey filter={{type: 'TextFilter'}} dataSort>Õpilane</TableHeaderColumn>
                     <TableHeaderColumn dataField="labs" >{'Praktikumid'}</TableHeaderColumn>
@@ -130,6 +128,7 @@ export default class GradesReport extends Component {
         })
     }
 }
+export default Radium(GradesReport);
 
 const styles = {
     panel: {

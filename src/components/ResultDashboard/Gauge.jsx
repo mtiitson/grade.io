@@ -2,8 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Colors } from '../../constants/UIConstants.js';
 import Radium from 'radium';
 
-@Radium
-export default class Gauge extends Component {
+class Gauge extends Component {
     static propTypes = {
         treshold: PropTypes.number,
         maximum: PropTypes.number,
@@ -45,6 +44,7 @@ export default class Gauge extends Component {
         return maximum && current === maximum;
     }
 }
+export default Radium(Gauge);
 
 const styles = {
     gauge: {
