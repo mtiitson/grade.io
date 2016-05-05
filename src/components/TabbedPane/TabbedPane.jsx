@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import Tabs from './Tabs.jsx';
 import Tab from './Tab.jsx';
+import {defaultFunction} from '../../util.js';
 
 export default class TabbedPane extends Component {
     static propTypes = {
         tabs: PropTypes.arrayOf(
                 PropTypes.shape({
                     title: PropTypes.string,
+                    id: PropTypes.string.isRequired,
                     label: PropTypes.shape({
                         text: PropTypes.string,
                         type: PropTypes.oneOf(['default', 'primary','success','info','warning','danger']),
@@ -14,13 +16,16 @@ export default class TabbedPane extends Component {
                     content: PropTypes.obj,
                 })
             ).isRequired,
-    }
+        selectedTab: PropTypes.string,
+        onTabSelection: PropTypes.func,
+    };
+
+    static defaultProps = {
+        onTabSelection: defaultFunction,
+    };
 
     constructor(props) {
         super(props);
-        this.state = {
-            selectedTab: props.tabs[0],
-        }
     }
 
     render() {
@@ -37,15 +42,15 @@ export default class TabbedPane extends Component {
                                             key={i}
                                             title={title}
                                             label={label}
-                                            selected={this.state.selectedTab === tab}
-                                            onSelect={this.handleTabSelection.bind(this, tab)}
+                                            selected={this.props.selectedTab === tab.id}
+                                            onSelect={this.handleTabSelection.bind(this, tab.id)}
                                         />
                                     );
                                 })}
                             </Tabs>
                         </div>
                         <div className="panel-body">
-                            {this.state.selectedTab.content}
+                            {this.props.tabs.find(tab => tab.id === this.props.selectedTab).content}
                         </div>
                     </div>
                 </div>
@@ -53,8 +58,6 @@ export default class TabbedPane extends Component {
         )
     }
     handleTabSelection(tab) {
-        this.setState({
-            selectedTab: tab
-        });
+        this.props.onTabSelection(tab);
     }
 }

@@ -44,6 +44,7 @@ SystemJS.config({
     "babel-plugin-transform-react-jsx": "npm:babel-plugin-transform-react-jsx@6.8.0",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "babel-runtime": "npm:babel-runtime@6.6.1",
+    "bootstrap-material-design": "npm:bootstrap-material-design@4.0.1",
     "bootstrap-sass": "github:twbs/bootstrap-sass@3.3.6",
     "bootstrap-select": "npm:bootstrap-select@1.10.0",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
@@ -56,9 +57,11 @@ SystemJS.config({
     "domain": "github:jspm/nodelibs-domain@0.1.0",
     "events": "github:jspm/nodelibs-events@0.2.0-alpha",
     "font-awesome": "npm:font-awesome@4.6.1",
+    "formsy-react": "npm:formsy-react@0.18.0",
     "fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
     "http": "github:jspm/nodelibs-http@0.2.0-alpha",
     "https": "github:jspm/nodelibs-https@0.2.0-alpha",
+    "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
     "jquery": "npm:jquery@2.2.3",
     "net": "github:jspm/nodelibs-net@0.2.0-alpha",
     "path": "github:jspm/nodelibs-path@0.2.0-alpha",
@@ -75,6 +78,8 @@ SystemJS.config({
     "react-redux": "npm:react-redux@4.4.1",
     "react-router": "npm:react-router@2.0.1",
     "redux": "npm:redux@3.3.1",
+    "redux-actions": "npm:redux-actions@0.9.1",
+    "redux-thunk": "npm:redux-thunk@2.0.1",
     "scss": "github:mobilexag/plugin-sass@0.3.0",
     "spin": "github:fgnass/spin.js@2.3.2",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
@@ -255,6 +260,12 @@ SystemJS.config({
         "babel-runtime": "npm:babel-runtime@5.8.38"
       }
     },
+    "npm:bootstrap-material-design@4.0.1": {
+      "map": {
+        "bootstrap": "github:twbs/bootstrap-sass@3.3.6",
+        "jquery": "npm:jquery@2.2.3"
+      }
+    },
     "npm:bootstrap-select@1.10.0": {
       "map": {
         "jquery": "npm:jquery@2.2.3"
@@ -398,14 +409,29 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.1"
       }
     },
+    "npm:encoding@0.1.12": {
+      "map": {
+        "iconv-lite": "npm:iconv-lite@0.4.13"
+      }
+    },
     "npm:evp_bytestokey@1.0.0": {
       "map": {
         "create-hash": "npm:create-hash@1.1.2"
       }
     },
+    "npm:flux-standard-action@0.6.1": {
+      "map": {
+        "lodash.isplainobject": "npm:lodash.isplainobject@3.2.0"
+      }
+    },
     "npm:font-awesome@4.6.1": {
       "map": {
         "css": "github:systemjs/plugin-css@0.1.21"
+      }
+    },
+    "npm:formsy-react@0.18.0": {
+      "map": {
+        "form-data-to-object": "npm:form-data-to-object@0.2.0"
       }
     },
     "npm:glob@7.0.3": {
@@ -456,6 +482,25 @@ SystemJS.config({
         "number-is-nan": "npm:number-is-nan@1.0.0"
       }
     },
+    "npm:isomorphic-fetch@2.2.1": {
+      "map": {
+        "node-fetch": "npm:node-fetch@1.5.1",
+        "whatwg-fetch": "npm:whatwg-fetch@1.0.0"
+      }
+    },
+    "npm:lodash.isplainobject@3.2.0": {
+      "map": {
+        "lodash._basefor": "npm:lodash._basefor@3.0.3",
+        "lodash.isarguments": "npm:lodash.isarguments@3.0.8",
+        "lodash.keysin": "npm:lodash.keysin@3.0.8"
+      }
+    },
+    "npm:lodash.keysin@3.0.8": {
+      "map": {
+        "lodash.isarguments": "npm:lodash.isarguments@3.0.8",
+        "lodash.isarray": "npm:lodash.isarray@3.0.4"
+      }
+    },
     "npm:loose-envify@1.1.0": {
       "map": {
         "js-tokens": "npm:js-tokens@1.0.3"
@@ -470,6 +515,12 @@ SystemJS.config({
     "npm:minimatch@3.0.0": {
       "map": {
         "brace-expansion": "npm:brace-expansion@1.1.4"
+      }
+    },
+    "npm:node-fetch@1.5.1": {
+      "map": {
+        "encoding": "npm:encoding@0.1.12",
+        "is-stream": "npm:is-stream@1.1.0"
       }
     },
     "npm:once@1.3.3": {
@@ -605,9 +656,15 @@ SystemJS.config({
         "core-util-is": "npm:core-util-is@1.0.2",
         "inherits": "npm:inherits@2.0.1",
         "isarray": "npm:isarray@1.0.0",
-        "process-nextick-args": "npm:process-nextick-args@1.0.6",
+        "process-nextick-args": "npm:process-nextick-args@1.0.7",
         "string_decoder": "npm:string_decoder@0.10.31",
         "util-deprecate": "npm:util-deprecate@1.0.2"
+      }
+    },
+    "npm:redux-actions@0.9.1": {
+      "map": {
+        "flux-standard-action": "npm:flux-standard-action@0.6.1",
+        "reduce-reducers": "npm:reduce-reducers@0.1.2"
       }
     },
     "npm:redux@3.3.1": {

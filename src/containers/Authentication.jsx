@@ -1,32 +1,64 @@
 import React, { Component, PropTypes } from 'react';
-import TabbedPane from '../components/TabbedPane/TabbedPane.jsx';
+import { connect } from 'react-redux'
+import Authentication from '../components/Authentication/Authentication.jsx';
 import Login from '../components/Authentication/Login.jsx';
 import Register from '../components/Authentication/Register.jsx';
+import {fetchUser, changeInputUsername, changeInputName, createUser, changeAuthenticationTab} from '../actions/index.js';
 
-export default class Authentication extends Component {
-    tabs = [
-        {
-            title: "Logi sisse",
-            content: (<Login />),
+const AuthenticationLogin = connect(
+    state => ({
+        username: state.authenticationBlock.username,
+    }),
+    dispatch => ({
+        onLogIn: (username, password) => {
+            dispatch(fetchUser(username, password))
         },
-        {
-            title: "Registreeri",
-            content: (<Register />),
+        onUsernameChange: username => {
+            dispatch(changeInputUsername(username))
         }
-    ]
-    
-    render() {
-        return (
-            <div className="row">
-                <div className="col-md-3">
-                </div>
-                <div className="col-md-6">
-                    <TabbedPane tabs={this.tabs}/>
-                </div>
-                <div className="col-md-3">
-                </div>
-            </div>
-        )
-        
+    })
+)(Login);
+
+const AuthenticationRegister = connect(
+    state => ({
+        username: state.authenticationBlock.username,
+        name: state.authenticationBlock.name,
+    }),
+    dispatch => ({
+        onUsernameChange: username => {
+            dispatch(changeInputUsername(username))
+        },
+        onNameChange: name => {
+            dispatch(changeInputName(name))
+        },
+        onRegister: (...args) => {
+            dispatch(createUser(...args))
+        }
+    })
+)(Register);
+
+const tabs = [
+    {
+        title: "Logi sisse",
+        id: "LOG_IN",
+        content: (<AuthenticationLogin />),
+    },
+    {
+        title: "Registreeri",
+        id: "REGISTER",
+        content: (<AuthenticationRegister />),
     }
-}
+];
+
+const GradeIOAuthentication = connect(
+    state => ({
+        tabs,
+        selectedTab: state.authenticationBlock.activeTab,
+    }),
+    dispatch => ({
+        onTabSelection: tab => {
+            dispatch(changeAuthenticationTab(tab));
+        }
+    })
+)(Authentication);
+export default GradeIOAuthentication;

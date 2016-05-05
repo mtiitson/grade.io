@@ -9,5 +9,5 @@ import 'systemjs-hot-reloader/default-listener.js';
 const appRoot = document.getElementById('app-host');
 render(
     <Root 
-        store={configureStore({state: {}})} 
+        store={configureStore({user: {}})}
     />, appRoot);

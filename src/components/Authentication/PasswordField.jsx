@@ -2,6 +2,16 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 
 export default class PasswordField extends Component {
+    static propTypes = {
+        visibleByDefault: PropTypes.bool,
+        value: PropTypes.string,
+        onChange: PropTypes.func,
+    };
+    static defaultProps = {
+        visibleByDefault: false,
+        value: '',
+        onChange: new Function(),
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -10,14 +20,21 @@ export default class PasswordField extends Component {
 
     }
     render() {
-        const {state} = this;
+        const {state, props} = this;
         return (
             <div style={styles.passwordField}>
                 <div className="input-group">
                     <span className="input-group-addon">
                         <span className="fa fa-key"></span>
                     </span>
-                    <input type={state.visible ? 'text' : 'password'} className="form-control" placeholder="Parool" style={styles.input}/>
+                    <input type={state.visible ? 'text' : 'password'}
+                           required
+                           className="form-control"
+                           placeholder="Parool"
+                           style={styles.input}
+                           value={props.value}
+                           onChange={this.handleChange}
+                    />
                 </div>
                 <div style={styles.visibilityToggle} onClick={this.handleClick}>
                     <i className={classNames('fa', {'fa-eye': !state.visible, 'fa-eye-slash': state.visible })} style={styles.visibilityIcon}></i>
@@ -25,15 +42,14 @@ export default class PasswordField extends Component {
             </div>
         )
     }
+    handleChange = (event) => {
+        this.props.onChange(event.target.value)
+    };
     handleClick = () => {
         this.setState({
             visible: !this.state.visible
         })
-    }
-}
-
-PasswordField.propTypes = {
-    visibleByDefault: PropTypes.bool
+    };
 }
 
 const styles = {
