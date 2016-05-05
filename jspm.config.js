@@ -1,16 +1,5 @@
 SystemJS.config({
   transpiler: "plugin-babel",
-  babelOptions: {
-    "optional": [
-      "es7.decorators",
-      "es7.classProperties",
-      "runtime",
-      "optimisation.modules.system"
-    ]
-  },
-  map: {
-    "babel": "npm:babel-core@5.8.35"
-  },
   packages: {
     "grade.io": {
       "main": "main.jsx",
@@ -32,7 +21,15 @@ SystemJS.config({
           }
         }
       }
+    },
+    "npm:babel-plugin-external-helpers-2@6.3.13": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@5.8.38"
+      }
     }
+  },
+  map: {
+    "babel/external-helpers": "npm:babel-plugin-external-helpers-2@6.3.13"
   }
 });
 
@@ -68,12 +65,12 @@ SystemJS.config({
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.9",
     "process": "github:jspm/nodelibs-process@0.2.0-alpha",
     "radium": "npm:radium@0.16.6",
-    "react": "npm:react@15.0.2",
+    "react": "react-cdn",
+    "react-dom": "react-dom-cdn",
     "react-addons-clone-with-props": "npm:react-addons-clone-with-props@0.14.7",
     "react-bootstrap": "npm:react-bootstrap@0.28.3",
     "react-bootstrap-table": "npm:react-bootstrap-table@2.0.2",
     "react-bootstrap-typeahead": "npm:react-bootstrap-typeahead@0.4.0",
-    "react-dom": "npm:react-dom@15.0.2",
     "react-input-autosize": "npm:react-input-autosize@0.6.13",
     "react-redux": "npm:react-redux@4.4.1",
     "react-router": "npm:react-router@2.0.1",
@@ -82,6 +79,7 @@ SystemJS.config({
     "spin": "github:fgnass/spin.js@2.3.2",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
+    "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@0.5.8",
     "tty": "github:jspm/nodelibs-tty@0.2.0-alpha",
     "url": "github:jspm/nodelibs-url@0.2.0-alpha",
     "util": "github:jspm/nodelibs-util@0.2.0-alpha",
@@ -89,6 +87,13 @@ SystemJS.config({
     "zlib": "github:jspm/nodelibs-zlib@0.2.0-alpha"
   },
   packages: {
+    "github:capaj/systemjs-hot-reloader@0.5.8": {
+      "map": {
+        "debug": "npm:debug@2.2.0",
+        "socket.io-client": "github:socketio/socket.io-client@1.4.6",
+        "weakee": "npm:weakee@1.0.0"
+      }
+    },
     "github:jspm/nodelibs-buffer@0.2.0-alpha": {
       "map": {
         "buffer-browserify": "npm:buffer@4.6.0"
@@ -195,11 +200,6 @@ SystemJS.config({
       }
     },
     "npm:babel-plugin-syntax-class-properties@6.8.0": {
-      "map": {
-        "babel-runtime": "npm:babel-runtime@6.6.1"
-      }
-    },
-    "npm:babel-plugin-syntax-flow@6.8.0": {
       "map": {
         "babel-runtime": "npm:babel-runtime@6.6.1"
       }
@@ -398,24 +398,9 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.1"
       }
     },
-    "npm:encoding@0.1.12": {
-      "map": {
-        "iconv-lite": "npm:iconv-lite@0.4.13"
-      }
-    },
     "npm:evp_bytestokey@1.0.0": {
       "map": {
         "create-hash": "npm:create-hash@1.1.2"
-      }
-    },
-    "npm:fbjs@0.8.1": {
-      "map": {
-        "babel-plugin-syntax-flow": "npm:babel-plugin-syntax-flow@6.8.0",
-        "core-js": "npm:core-js@1.2.6",
-        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
-        "loose-envify": "npm:loose-envify@1.1.0",
-        "promise": "npm:promise@7.1.1",
-        "ua-parser-js": "npm:ua-parser-js@0.7.10"
       }
     },
     "npm:font-awesome@4.6.1": {
@@ -471,12 +456,6 @@ SystemJS.config({
         "number-is-nan": "npm:number-is-nan@1.0.0"
       }
     },
-    "npm:isomorphic-fetch@2.2.1": {
-      "map": {
-        "node-fetch": "npm:node-fetch@1.5.1",
-        "whatwg-fetch": "npm:whatwg-fetch@1.0.0"
-      }
-    },
     "npm:loose-envify@1.1.0": {
       "map": {
         "js-tokens": "npm:js-tokens@1.0.3"
@@ -491,12 +470,6 @@ SystemJS.config({
     "npm:minimatch@3.0.0": {
       "map": {
         "brace-expansion": "npm:brace-expansion@1.1.4"
-      }
-    },
-    "npm:node-fetch@1.5.1": {
-      "map": {
-        "encoding": "npm:encoding@0.1.12",
-        "is-stream": "npm:is-stream@1.1.0"
       }
     },
     "npm:once@1.3.3": {
@@ -523,11 +496,6 @@ SystemJS.config({
         "js-base64": "npm:js-base64@2.1.9",
         "source-map": "npm:source-map@0.5.6",
         "supports-color": "npm:supports-color@3.1.2"
-      }
-    },
-    "npm:promise@7.1.1": {
-      "map": {
-        "asap": "npm:asap@2.0.3"
       }
     },
     "npm:public-encrypt@4.0.0": {
@@ -630,13 +598,6 @@ SystemJS.config({
         "element-class": "npm:element-class@0.2.2",
         "react-addons-update": "npm:react-addons-update@15.0.2",
         "react-dom": "npm:react-dom@15.0.2"
-      }
-    },
-    "npm:react@15.0.2": {
-      "map": {
-        "fbjs": "npm:fbjs@0.8.1",
-        "loose-envify": "npm:loose-envify@1.1.0",
-        "object-assign": "npm:object-assign@4.1.0"
       }
     },
     "npm:readable-stream@2.1.2": {

@@ -29,6 +29,7 @@
     },
     "devDependencies": {
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "babel-plugin-external-helpers-2": "npm:babel-plugin-external-helpers-2@^6.3.13",
       "babel-plugin-transform-class-properties": "npm:babel-plugin-transform-class-properties@^6.8.0",
       "babel-plugin-transform-react-jsx": "npm:babel-plugin-transform-react-jsx@^6.8.0",
       "babel-runtime": "npm:babel-runtime@^6.6.1",
@@ -62,6 +63,7 @@
       "spin": "github:fgnass/spin.js@2.3.2",
       "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
       "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
+      "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@^0.5.8",
       "tty": "github:jspm/nodelibs-tty@^0.2.0-alpha",
       "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
       "util": "github:jspm/nodelibs-util@^0.2.0-alpha",

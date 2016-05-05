@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { UPDATE } from 'actions/index';
+import { UPDATE } from '../actions/index';
 
 
 function reducer(state = { }, action) {
