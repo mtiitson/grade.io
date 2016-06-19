@@ -1,0 +1,58 @@
+{
+	"unsubmitted": [{
+		"id": 1,
+		"name": "Prototüüpimine paberil"
+	}, {
+		"id": 2,
+		"name": "Veebilehtede põhjad"
+	}, {
+		"id": 3,
+		"name": "Frustratsiooniliides"
+	}, {
+		"id": 4,
+		"name": "Kassid"
+	}, {
+		"id": 5,
+		"name": "Nurgelised kassid"
+	}, {
+		"id": 6,
+		"name": "Süntaktiliselt äge CSS"
+	}, {
+		"id": 7,
+		"name": "Nurgelised koerad"
+	}, {
+		"id": 8,
+		"name": "Django Sissejuhatus"
+	}, {
+		"id": 9,
+		"name": "Django Edasijuhatus"
+	}, {
+		"id": 10,
+		"name": "Kasutajatestid"
+	}],
+	"submitted": [{
+		"id": 1,
+		"name": "Prototüüpimine paberil",
+		"grade": {
+			"criteria": [{
+				"description": "Esitatud",
+				"score": 1
+			}],
+			"comment": "",
+			"date": "2016-05-08T17:53:48.743Z"
+		},
+		"coauthors": [ "Viljar Liha" ]
+	}, {
+		"id": 2,
+		"name": "Veebilehtede põhjad",
+		"grade": {
+			"criteria": [{
+				"description": "Esitatud",
+				"score": 1
+			}],
+			"comment": "",
+			"date": "2016-05-08T17:53:48.743Z"
+		},
+		"coauthors": [ "Kaido Stepsel" ]
+	}]
+}

@@ -1,0 +1,38 @@
+{
+    "graded": [
+        {
+            "date": "2016-05-09T10:16:23.659Z",
+            "authors": [
+                "Jaan Pummelung", "Villu Tatt"
+            ],
+            "type": "PROTOTYPE_1",
+            "title": "Prototüüp 1"
+        },
+        {
+            "date": "2016-05-09T10:16:23.659Z",
+            "authors": [
+                "Villu Tatt", "Tiina Taani"
+            ],
+            "type": "PROTOTYPE_2",
+            "title": "Prototüüp 2"
+        },
+        {
+            "date": "2016-05-09T10:16:23.659Z",
+            "authors": [
+                "Villu Tatt"
+            ],
+            "type": "LAB",
+            "title": "Veebilehtede põhjad"
+        }
+    ],
+    "ungraded": [
+        {
+            "date": "2016-05-09T10:16:23.659Z",
+            "authors": [
+                "Villu Tatt"
+            ],
+            "type": "QUIZ",
+            "title": "Kontrolltöö"
+        }
+    ]
+}

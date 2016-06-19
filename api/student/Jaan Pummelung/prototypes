@@ -1,0 +1,65 @@
+{
+    "submitted": [{
+        "id": 1,
+        "coauthors": [
+            "Jaan Pummelung"
+        ],
+        "submission": "http://www.neti.ee",
+        "grade": {
+            "criteria": [
+                {
+                    "score": 15,
+                    "description": "Esitatud"
+                },
+                {
+                    "score": 2,
+                    "description": "Mulje"
+                },
+                {
+                    "score": 2,
+                    "description": "Ilu"
+                },
+                {
+                    "score": 0,
+                    "description": "Frustratsioon"
+                },
+                {
+                    "score": 2,
+                    "description": "Infoedastus"
+                },
+                {
+                    "score": 2,
+                    "description": "Navigatsioon"
+                },
+                {
+                    "score": 2,
+                    "description": "Hindamisvaade"
+                },
+                {
+                    "score": 1,
+                    "description": "Mobiilivaade"
+                },
+                {
+                    "score": 1,
+                    "description": "Viimistlus"
+                },
+                {
+                    "score": 1,
+                    "description": "Üllatav/Äge"
+                },
+                {
+                    "score": -1,
+                    "description": "Pluss/Miinus"
+                },
+                {
+                    "score": 0,
+                    "description": "Hilinemine"
+                }
+            ],
+            "comment": "Lorem ipsum"
+        }
+    }],
+    "unsubmitted": [{
+        "id": 2
+    }]
+}

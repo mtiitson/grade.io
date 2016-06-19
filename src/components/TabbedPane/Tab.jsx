@@ -9,7 +9,7 @@ export default class Tab extends Component {
             text: PropTypes.string,
             type: PropTypes.oneOf(['default', 'primary','success','info','warning','danger']),
         }),
-    }
+    };
     constructor(props) {
         super(props);
     }

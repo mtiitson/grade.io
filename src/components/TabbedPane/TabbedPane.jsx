@@ -16,7 +16,7 @@ export default class TabbedPane extends Component {
                     content: PropTypes.obj,
                 })
             ).isRequired,
-        selectedTab: PropTypes.string,
+        selectedTab: PropTypes.string.isRequired,
         onTabSelection: PropTypes.func,
     };
 

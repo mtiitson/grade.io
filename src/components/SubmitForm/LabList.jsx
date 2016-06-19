@@ -3,6 +3,15 @@ import $ from 'jquery';
 import bootstrapSelect from 'bootstrap-select';
 
 export default class LabList extends Component {
+    static propTypes = {
+        labs: PropTypes.arrayOf(PropTypes.shape({
+            name: PropTypes.string,
+            id: PropTypes.string,
+        }))
+    };
+    static defaultProps = {
+        labs: []
+    };
     render() {
         return (
             <select ref={select => {
@@ -13,6 +22,7 @@ export default class LabList extends Component {
                 });
             }}>
               <option>Vali praktikum...</option>
+                {this.props.labs}
               <option>Prototüüpimine paberil</option>
               <option>Veebilehtede põhjad</option>
               <option>Frustratsiooniliides</option>

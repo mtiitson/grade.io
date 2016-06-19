@@ -1,17 +1,41 @@
 import React, { Component, PropTypes } from 'react';
-import Work from '../../models/Work.js';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import 'react-bootstrap-table/css/react-bootstrap-table.css!';
 import 'react-bootstrap-table/css/toastr.css!';
-import CoauthorSearch from '../SubmitForm/CoauthorSearch.jsx';
+import StudentsSelection from '../SubmitForm/StudentsSelection.jsx';
+import {defaultFunction} from '../../util.js';
 
 export default class WorkReport extends Component {
     static propTypes = {
-        work: PropTypes.instanceOf(Work),
+        work: PropTypes.object,
         editable: PropTypes.bool,
         onChange: PropTypes.func,
+        loadWork: PropTypes.func.isRequired,
+    };
+    static defaultProps = {
+        onChange: defaultFunction,
+    };
+
+    componentWillMount() {
+        if (this.props.work) return;
+        this.props.loadWork();
     }
 
+    componentDidMount() {
+        this.props.onChange(this.state.work || {});
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            work: nextProps.work
+        })
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {work: props.work};
+    }
+    
     get cellEditOptions() {
         if (!this.props.editable) {
             return undefined;
@@ -24,14 +48,8 @@ export default class WorkReport extends Component {
         }
     }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            work: props.work,
-        }
-    }
     get commentView() {
-        const {comment} = this.props.work;
+        const {comment} = this.state.work.grade;
         if (comment) {
             return (
                 <div className="col-md-5">
@@ -50,9 +68,9 @@ export default class WorkReport extends Component {
         }
         return (
             <div>
-                <GeneralDetails work={work} editable={this.props.editable}/>
+                <GeneralDetails work={work} editable={this.props.editable} onStudentsSelect={this.handleStudentsChange}/>
                 <div className="row">
-                    <div className={`col-md-${work.comment ? '7' : '12'}`}>
+                    <div className={`col-md-${work.grade.comment ? '7' : '12'}`}>
                         <BootstrapTable data={work.grade.criteria} hover cellEdit={this.cellEditOptions}>
                             <TableHeaderColumn dataField="description" isKey>{'Kriteerium'}</TableHeaderColumn>
                             <TableHeaderColumn dataField="score">{'Punktid'}</TableHeaderColumn>
@@ -63,9 +81,14 @@ export default class WorkReport extends Component {
               </div>
         )
     }
+    handleStudentsChange = (students) => {
+        this.setState({
+            work: {...this.state.work, coauthors: students}
+        });
+    };
     handleCommentChange = () => {
         this.setState({
-            work: Object.assign(this.state.work, {comment: this.commentTextArea.value})
+            work: {...this.state.work, grade: {...this.state.work.grade, comment: this.commentTextArea.value}}
         });
     };
     handleGradeChange = (criterion) => {
@@ -77,20 +100,27 @@ export default class WorkReport extends Component {
         }) < 0) {
             criteria.push(criterion);
         }
+        this.setState({
+            work: {...this.state.work, grade: {...this.state.work.grade, criteria}}
+        })
     };
     componentDidUpdate() {
-        if (this.onChange) {
-            this.onChange(this.state.work);
-        }
+        this.props.onChange(this.state.work || {});
     }
 }
 
 class GeneralDetails extends Component {
     static propTypes = {
-        work: PropTypes.instanceOf(Work).isRequired,
+        work: PropTypes.object.isRequired,
         editable: PropTypes.bool,
-    }
-
+        onStudentsSelect: PropTypes.func,
+    };
+    static defaultProps = {
+        onStudentsSelect: defaultFunction,
+    };
+    handleStudentsSelect = (students) => {
+        this.props.onStudentsSelect(students);
+    };
     get submissionView() {
         const {submission} = this.props.work;
         if (submission) {
@@ -108,8 +138,8 @@ class GeneralDetails extends Component {
 
 
     get coauthorsView() {
-        const coauthors = this.props.work.getCoauthors('Mati Kaal').join(', ');
-        if (!!coauthors && coauthors.length) {
+        const coauthors = (this.props.work.coauthors || []).join(', ');
+        if (!this.props.editable) {
             return (
                 <div className="form-group">
                     <label>Kaasautorid</label>
@@ -119,11 +149,11 @@ class GeneralDetails extends Component {
                     </div>
                 </div>
             )
-        } else if (this.props.editable) {
+        } else {
             return (
                 <div className="form-group">
                     <label>Õpilane</label>
-                    <CoauthorSearch />
+                    <StudentsSelection selected={this.props.work.coauthors} onSelect={this.handleStudentsSelect} />
                 </div>
             )
         }

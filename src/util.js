@@ -1,5 +1,5 @@
 export function toDateString(date) {
-    return date.toLocaleDateString();
+    return new Date(date).toLocaleDateString();
 }
 
 export function defaultFunction(...args) {

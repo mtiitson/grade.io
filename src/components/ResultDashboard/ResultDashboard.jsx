@@ -10,8 +10,12 @@ export default class ResultDashboard extends Component {
             maximum: PropTypes.number,
         })).isRequired,
         onSelect: PropTypes.func,
+        loadResults: PropTypes.func.isRequired,
     }
 
+    componentWillMount() {
+        this.props.loadResults();
+    }
     
     render() {
         return (

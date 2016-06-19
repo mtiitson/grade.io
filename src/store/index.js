@@ -6,7 +6,7 @@ import thunkMiddleware from 'redux-thunk';
 const createConfiguredStore = compose(
     applyMiddleware(thunkMiddleware),
     //, persistState(/*paths, config*/)
-    window.devToolsExtension ? window.devToolsExtension() : undefined,
+    //window.devToolsExtension ? window.devToolsExtension() : undefined,
 )(createStore);
 
 export default function configureStore(initialState) {

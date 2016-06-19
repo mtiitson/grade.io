@@ -54,8 +54,9 @@ SystemJS.config({
     "core-js": "npm:core-js@2.3.0",
     "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
     "css": "github:systemjs/plugin-css@0.1.21",
-    "domain": "github:jspm/nodelibs-domain@0.1.0",
+    "domain": "github:jspm/nodelibs-domain@0.2.0-alpha",
     "events": "github:jspm/nodelibs-events@0.2.0-alpha",
+    "fbjs": "npm:fbjs@0.3.2",
     "font-awesome": "npm:font-awesome@4.6.1",
     "formsy-react": "npm:formsy-react@0.18.0",
     "fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
@@ -92,6 +93,11 @@ SystemJS.config({
     "zlib": "github:jspm/nodelibs-zlib@0.2.0-alpha"
   },
   packages: {
+    "github:jspm/nodelibs-domain@0.2.0-alpha": {
+      "map": {
+        "domain-browserify": "npm:domain-browser@1.1.7"
+      }
+    },
     "github:capaj/systemjs-hot-reloader@0.5.8": {
       "map": {
         "debug": "npm:debug@2.2.0",
@@ -107,11 +113,6 @@ SystemJS.config({
     "github:jspm/nodelibs-crypto@0.2.0-alpha": {
       "map": {
         "crypto-browserify": "npm:crypto-browserify@3.11.0"
-      }
-    },
-    "github:jspm/nodelibs-domain@0.1.0": {
-      "map": {
-        "domain-browser": "npm:domain-browser@1.1.7"
       }
     },
     "github:jspm/nodelibs-http@0.2.0-alpha": {
@@ -419,6 +420,15 @@ SystemJS.config({
         "create-hash": "npm:create-hash@1.1.2"
       }
     },
+    "npm:fbjs@0.3.2": {
+      "map": {
+        "core-js": "npm:core-js@1.2.6",
+        "loose-envify": "npm:loose-envify@1.1.0",
+        "promise": "npm:promise@7.1.1",
+        "ua-parser-js": "npm:ua-parser-js@0.7.10",
+        "whatwg-fetch": "npm:whatwg-fetch@0.9.0"
+      }
+    },
     "npm:flux-standard-action@0.6.1": {
       "map": {
         "lodash.isplainobject": "npm:lodash.isplainobject@3.2.0"
@@ -485,7 +495,7 @@ SystemJS.config({
     "npm:isomorphic-fetch@2.2.1": {
       "map": {
         "node-fetch": "npm:node-fetch@1.5.1",
-        "whatwg-fetch": "npm:whatwg-fetch@1.0.0"
+        "whatwg-fetch": "npm:whatwg-fetch@0.9.0"
       }
     },
     "npm:lodash.isplainobject@3.2.0": {
@@ -547,6 +557,11 @@ SystemJS.config({
         "js-base64": "npm:js-base64@2.1.9",
         "source-map": "npm:source-map@0.5.6",
         "supports-color": "npm:supports-color@3.1.2"
+      }
+    },
+    "npm:promise@7.1.1": {
+      "map": {
+        "asap": "npm:asap@2.0.3"
       }
     },
     "npm:public-encrypt@4.0.0": {
@@ -632,7 +647,7 @@ SystemJS.config({
       "map": {
         "hoist-non-react-statics": "npm:hoist-non-react-statics@1.0.5",
         "invariant": "npm:invariant@2.2.1",
-        "lodash": "npm:lodash@4.11.2",
+        "lodash": "npm:lodash@4.12.0",
         "loose-envify": "npm:loose-envify@1.1.0"
       }
     },
@@ -647,8 +662,7 @@ SystemJS.config({
       "map": {
         "classnames": "npm:classnames@2.2.5",
         "element-class": "npm:element-class@0.2.2",
-        "react-addons-update": "npm:react-addons-update@15.0.2",
-        "react-dom": "npm:react-dom@15.0.2"
+        "react-addons-update": "npm:react-addons-update@15.0.2"
       }
     },
     "npm:readable-stream@2.1.2": {
@@ -669,8 +683,8 @@ SystemJS.config({
     },
     "npm:redux@3.3.1": {
       "map": {
-        "lodash": "npm:lodash@4.11.2",
-        "lodash-es": "npm:lodash-es@4.11.2",
+        "lodash": "npm:lodash@4.12.0",
+        "lodash-es": "npm:lodash-es@4.12.0",
         "loose-envify": "npm:loose-envify@1.1.0"
       }
     },

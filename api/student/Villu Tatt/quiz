@@ -1,0 +1,22 @@
+{
+    "grade": {
+        "criteria": [
+            {
+                "score": 10,
+                "description": "Ülesanne 1"
+            },
+            {
+                "score": 2,
+                "description": "Ülesanne 2"
+            },
+            {
+                "score": 2,
+                "description": "Ülesanne 3"
+            },
+            {
+                "score": 0,
+                "description": "Ülesanne 4"
+            }
+        ]
+    }
+}

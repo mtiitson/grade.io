@@ -2,21 +2,24 @@ import React, {PropTypes, Component} from 'react';
 import Radium, {Style} from 'radium';
 import {Modal} from 'react-bootstrap';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import TeacherPrototypeReport from '../../containers/TeacherPrototypeReport.jsx';
 import TeacherQuizSubmit from '../../containers/TeacherQuizSubmit.jsx';
 import StudentLabSeriesReport from '../../containers/StudentLabSeriesReport.jsx';
+import StudentQuizReport from '../../containers/StudentQuizReport.jsx';
+import StudentPrototypeReport from '../../containers/StudentPrototypeReport.jsx';
 import $ from 'jquery';
 
 class GradesReport extends Component {
     static propTypes = {
-        grades: PropTypes.arrayOf(PropTypes.shape({
-            student: PropTypes.string,
-            labs: PropTypes.number,
-            proto1: PropTypes.number,
-            proto2: PropTypes.number,
-            quiz: PropTypes.number,
-        })),
+        grades: PropTypes.array,
+        loadGrades: PropTypes.func.isRequired,
     };
+    static defaultProps = {
+        grades: [],
+    };
+    componentWillMount() {
+        this.props.loadGrades();
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -35,6 +38,15 @@ class GradesReport extends Component {
             )
         }
         const gradesTable = grades.map((item, i)=> {
+            const {name, labs, prototypes, quiz} = item;
+            return {
+                name,
+                labs,
+                proto1: prototypes[0],
+                proto2: prototypes[1],
+                quiz,
+                total: labs + prototypes[0] + prototypes[1] + quiz
+            };
             return Object.assign({}, item, {key: i}, {total: item.labs + item.proto1 + item.proto2 + item.quiz});
         });
         return (
@@ -57,7 +69,7 @@ class GradesReport extends Component {
                           clearSearch: true,
                       }}
                       trClassName="tr-clickable">
-                    <TableHeaderColumn dataField="student" isKey filter={{type: 'TextFilter'}} dataSort>Õpilane</TableHeaderColumn>
+                    <TableHeaderColumn dataField="name" isKey filter={{type: 'TextFilter'}} dataSort>Õpilane</TableHeaderColumn>
                     <TableHeaderColumn dataField="labs" >{'Praktikumid'}</TableHeaderColumn>
                     <TableHeaderColumn dataField="proto1" >{'Prototüüp 1'}</TableHeaderColumn>
                     <TableHeaderColumn dataField="proto2" >{'Prototüüp 2'}</TableHeaderColumn>
@@ -87,38 +99,36 @@ class GradesReport extends Component {
                     .children(':first')
                     .html();
                 const column = $this.prevAll().length;
-                const work = $this
-                    .closest('.react-bs-table')
-                    .find('th')
-                    .eq(column)
-                    .children('span:first')
-                    .html();
-                this.handleOpenDetails(student, work);
+                this.handleOpenDetails(student, column);
                     
             });
     }
 
-    handleOpenDetails = (student, work) => {
-        switch (work) {
-            case "Praktikumid":
+    handleOpenDetails = (student, column) => {
+        switch (column) {
+            case 1:
                 this.setState({
-                    detailsView: (<StudentLabSeriesReport />),
+                    detailsView: (<StudentLabSeriesReport student={student}/>),
                 });
                 break;
-            case "Prototüüp 1":
-            case "Prototüüp 2":
+            case 2:
                 this.setState({
-                    detailsView: (<TeacherPrototypeReport />),
+                    detailsView: (<StudentPrototypeReport id={1} student={student}/>),
                 });
                 break;
-            case "Kontrolltöö":
+            case 3:
                 this.setState({
-                    detailsView: (<TeacherQuizSubmit />),
+                    detailsView: (<StudentPrototypeReport id={2} student={student}/>),
+                });
+                break;
+            case 4:
+                this.setState({
+                    detailsView: (<StudentQuizReport student={student}/>)
                 });
                 break;
         }
         this.setState({
-            detailsViewTitle: work,
+            detailsViewTitle: '',
             detailsViewVisible: true,
         });
     }

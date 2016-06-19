@@ -3,20 +3,14 @@ import QuizWork from '../models/QuizWork.js';
 import WorkReport from '../components/Reports/WorkReport.jsx';
 import Grade from '../models/Grade.js';
 import Criterion from '../models/Criterion.js';
+import {fetchQuiz} from '../actions/index.js';
+import {connect} from 'react-redux';
 
-const work = new QuizWork(
-    new Grade([
-        new Criterion('#1', 20), 
-        new Criterion('#2', 40)
-    ]),
-    ['Mati Kaal'],
-);
-export default class StudentQuizReport extends Component {
-    render() {
-        return (
-            <WorkReport work={work} />
-        )
-
-    }
-
-}
+export default connect(
+    (state, ownProps) => ({
+        work: state.quiz.loaded || null,
+    }),
+    (dispatch, ownProps) => ({
+        loadWork: () => dispatch(fetchQuiz(ownProps.student)),
+    }),
+)(WorkReport);

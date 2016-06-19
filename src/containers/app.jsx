@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Navigation from '../components/Navigation.jsx';
+import Navigation from '../containers/Navigation.jsx';
 
 export default class App extends Component {
     //static propTypes = {

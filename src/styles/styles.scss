@@ -6,3 +6,9 @@
 @import 'react-bootstrap-typeahead';
 @import 'react-bootstrap-table';
 
+.form-control:invalid {
+   border-color: $brand-danger;
+   outline: 0;
+   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(red($brand-danger), green($brand-danger), blue($brand-danger), .6);
+}
+

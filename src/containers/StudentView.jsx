@@ -9,8 +9,8 @@ import {Modal} from 'react-bootstrap';
 export default class StudentView extends Component {
     detailsViews = [
         {title: "Praktikumid", content: <StudentLabSeriesReport /> },
-        {title: "Prototüüp 1", content: <StudentPrototypeReport key={1}/> },
-        {title: "Prototüüp 2", content: <StudentPrototypeReport key={2}/> },
+        {title: "Prototüüp 1", content: <StudentPrototypeReport key={1} id={1}/> },
+        {title: "Prototüüp 2", content: <StudentPrototypeReport key={2} id={2}/> },
         {title: "Kontrolltöö", content: <StudentQuizReport /> },
 
     ]

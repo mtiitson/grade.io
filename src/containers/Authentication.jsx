@@ -3,7 +3,12 @@ import { connect } from 'react-redux'
 import Authentication from '../components/Authentication/Authentication.jsx';
 import Login from '../components/Authentication/Login.jsx';
 import Register from '../components/Authentication/Register.jsx';
-import {fetchUser, changeInputUsername, changeInputName, createUser, changeAuthenticationTab} from '../actions/index.js';
+import {
+    fetchUser, 
+    createUser,
+    changeInputUsername, 
+    changeInputName,  
+    changeAuthenticationTab} from '../actions/index.js';
 
 const AuthenticationLogin = connect(
     state => ({

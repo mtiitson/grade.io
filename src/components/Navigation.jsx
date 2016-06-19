@@ -1,8 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import {defaultFunction} from '../util.js';
 
 export default class Navigation extends Component {
+    static propTypes = {
+        loggedInUser: PropTypes.string,
+        onLogOut: PropTypes.func,
+        isStudent: PropTypes.bool,
+        isTeacher: PropTypes.bool,
+    };
+    static defaultPropTypes = {
+        loggedInUser: '',
+        onLogOut: defaultFunction,
+    };
+
+    handleLogOut = () => {
+        this.props.onLogOut();
+    };
     render() {
+        const {loggedInUser, isTeacher, isStudent} = this.props;
         return (
             <nav className="navbar navbar-default">
                 <div className="container-fluid">
@@ -16,22 +32,25 @@ export default class Navigation extends Component {
                     </div>
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav">
-                            <li><Link to="/auth">Külalise vaade</Link></li>
-                            <li><Link to="/student">Õpilase vaade</Link></li>
-                            <li><Link to="/teacher">Õpetaja vaade</Link></li>
-                            <li><Link to="/grades">Hinnete vaade</Link></li>
+                            {isStudent && (<li><Link to="/student">Esitamine</Link></li>)}
+                            {isTeacher && (<li><Link to="/teacher">Hindamine</Link></li>)}
+                            {(isTeacher || isStudent) && (<li><Link to="/grades">Hinded</Link></li>)}
                         </ul>
-                        <ul className="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Villu Tatt&nbsp;&nbsp;&nbsp;<i className="fa fa-user fa-lg"></i><span class="caret"></span></a>
-                                <ul className="dropdown-menu">
-                                    <li><a href="#">Logi välja</a></li>
-                                  </ul>
-                            </li>
-                        </ul>
+                        {loggedInUser ? (<UserMenu name={loggedInUser} onLogOut={this.handleLogOut}/>) : ''}
                     </div>
                 </div>
             </nav>
         );
     }
 }
+
+const UserMenu = ({name, onLogOut}) => (
+    <ul className="nav navbar-nav navbar-right">
+        <li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">{name}&nbsp;&nbsp;&nbsp;<i className="fa fa-user fa-lg"></i><span class="caret"></span></a>
+            <ul className="dropdown-menu">
+                <li><a href="#" onClick={onLogOut}>Logi välja</a></li>
+            </ul>
+        </li>
+    </ul>
+);

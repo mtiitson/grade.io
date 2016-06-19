@@ -1,0 +1,9 @@
+{
+  "registry": "jspm",
+  "dependencies": {
+    "bootstrap": "github:twbs/bootstrap-sass@^3.3.6",
+    "jquery": "npm:jquery@^2.2.2"
+  },
+  "main": "dist/bootstrap-material-design.umd.js",
+  "format": "amd"
+}

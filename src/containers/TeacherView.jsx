@@ -4,18 +4,31 @@ import TeacherUngradedWorks from './TeacherUngradedWorks.jsx';
 import TeacherGradedWorks from './TeacherGradedWorks.jsx';
 import TeacherQuizSubmit from './TeacherQuizSubmit.jsx';
 import {Modal} from 'react-bootstrap';
+import {changeWorksTab} from '../actions/index.js';
+import {connect} from 'react-redux';
+
+const Works = ({tabs, selectedTab, onTabSelection}) => (
+    <TabbedPane
+        tabs={tabs}
+        selectedTab={selectedTab}
+        onTabSelection={onTabSelection}
+    />
+);
+
+const tabs = [
+    {
+        title: "Hindamata tööd",
+        id: "UNGRADED",
+        content: (<TeacherUngradedWorks />)
+    },
+    {
+        title: "Hinnatud tööd",
+        id: "GRADED",
+        content: (<TeacherGradedWorks />)
+    }
+];
 
 export default class TeacherView extends Component {
-    tabs = [
-        {
-            title: "Hindamata tööd",
-            content: (<TeacherUngradedWorks />)
-        },
-        {
-            title: "Hinnatud tööd",
-            content: (<TeacherGradedWorks />)
-        }
-    ]
 
     constructor(props) {
         super(props);
@@ -23,7 +36,7 @@ export default class TeacherView extends Component {
             quizSubmissionVisible: false,
         }
     }
-    
+
     render() {
         return (
             <div>
@@ -32,7 +45,9 @@ export default class TeacherView extends Component {
                         <Modal.Title>{'Kontrolltöö'}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <TeacherQuizSubmit />
+                        <TeacherQuizSubmit
+                            onCancel={this.handleQuizSubmissionClose}
+                        />
                     </Modal.Body>
                 </Modal>
                 <div className="page-header">
@@ -47,7 +62,7 @@ export default class TeacherView extends Component {
                         </div>
                     </div>
                 </div>
-                <TabbedPane tabs={this.tabs}/>
+                <TeacherWorks />
             </div>
         );
     }
@@ -56,12 +71,12 @@ export default class TeacherView extends Component {
         this.setState({
             quizSubmissionVisible: false,
         });
-    }
+    };
     handleSubmitQuiz = () => {
         this.setState({
             quizSubmissionVisible: true,
         });
-    }
+    };
 
 }
 const styles = {
@@ -69,4 +84,14 @@ const styles = {
         marginTop: '2em',
         marginBottom: '2em',
     }
-}
+};
+
+const TeacherWorks = connect(
+    state => ({
+        tabs,
+        selectedTab: state.worksBlock.activeTab,
+    }),
+    dispatch => ({
+        onTabSelection: tab => dispatch(changeWorksTab(tab))
+    })
+)(Works);

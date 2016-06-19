@@ -45,7 +45,7 @@ export default class Login extends Component {
     }
     render() {
         return (
-            <form ref={(form) => {this.form = form}}>
+            <form ref={(form) => {this.form = form}} onSubmit={this.handleLogIn}>
                 <div className="form-group">
                     <div className="input-group">
                         <span className="input-group-addon">
@@ -76,7 +76,8 @@ export default class Login extends Component {
                     <div className="btn-group" role="group">
                         <button type="button"
                                 className={`btn btn-${this.valid ? 'primary' : 'disabled'}`}
-                                onClick={this.handleLogin}>
+                                onClick={this.handleLogIn}
+                                >
                             Logi sisse
                         </button>
                     </div>
